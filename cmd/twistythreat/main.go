@@ -1,4 +1,4 @@
-// Package main is the entry point for the enhance-dnstwist application.
+// Package main is the entry point for the twistythreat application.
 // It loads configuration, retrieves domain information from a file,
 // performs threat intelligence checks using VirusTotal, and categorizes
 // domains based on their status. The application then sends the results
@@ -38,21 +38,21 @@
 //	RUN go mod download
 //
 //	# Build the Go application
-//	RUN go build -o enhance-dnstwist cmd/enhance-dnstwist/main.go
+//	RUN go build -o twistythreat cmd/twistythreat/main.go
 //
 //	# Run the application
-//	CMD ["./enhance-dnstwist"]
+//	CMD ["./twistythreat"]
 //
 // docker-compose.yml:
 //
 //	services:
-//	  enhance-dnstwist:
+//	  twistythreat:
 //	    build: .
 //	    env_file:
 //	      - .env
 //	    volumes:
 //	      - ./output:/app/output
-//	    command: ["./enhance-dnstwist"]
+//	    command: ["./twistythreat"]
 //
 // To build and run the application using Docker Compose:
 //
