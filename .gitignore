@@ -21,4 +21,5 @@
 go.work
 .env
 
-sample_output.json
+domains.txt
+output/*

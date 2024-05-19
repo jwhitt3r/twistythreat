@@ -1,8 +1,8 @@
-version: '3.8'
-
 services:
-  enhance-dnstwist:
+  twistythreat:
     build: .
-    env_file:
+    env_file: 
       - .env
-    command: ["go", "run", "cmd/enhance-dnstwist/main.go"]
+    volumes:
+      - ./output:/app/output
+    command: ["./twistythreat"]

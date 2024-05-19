@@ -1,23 +1,23 @@
-# Use an appropriate base image with Go and cron installed
-FROM golang:1.18-alpine
+# Use an official Python runtime as a parent image
+FROM python:3.12-alpine
 
-# Set the working directory
+# Install Go and other dependencies
+RUN apk add --no-cache go git build-base
+
+# Install dnstwist
+RUN pip install dnstwist
+
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the Go binary and the script into the container
-COPY enhance_dnstwist /app/enhance_dnstwist
-COPY run_app.sh /app/run_app.sh
-COPY cronjob /etc/crontabs/root
+# Clone the GitHub repository
+RUN git clone https://github.com/jwhitt3r/twistythreat.git .
 
-# Ensure the script is executable
-RUN chmod +x /app/run_app.sh
+# Set up the Go environment and install dependencies
+RUN go mod download
 
-# Install cron
-RUN apk update && apk add --no-cache \
-    bash \
-    curl \
-    busybox-suid \
-    cronie
+# Build the Go application
+RUN go build -o twistythreat cmd/twistythreat/main.go
 
-# Add command to start cron in the foreground (so Docker container stays alive)
-CMD ["crond", "-f"]
+# Run the application
+CMD ["./twistythreat"]
