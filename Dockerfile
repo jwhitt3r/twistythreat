@@ -12,7 +12,10 @@ RUN go mod download
 COPY . .
 
 # Build the Go application
-RUN go build -o twistythreat cmd/twistythreat/main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -o /app/twistythreat /app/cmd/twistythreat/main.go
+
+# Verify the Go binary
+RUN ls -la /app/twistythreat
 
 # Use an official Python runtime as a parent image
 FROM python:3.12-alpine
@@ -32,4 +35,4 @@ COPY domains.txt /app/domains.txt
 COPY .env /app/.env
 
 # Run the application
-CMD ["./twistythreat"]
+CMD ["/app/twistythreat"]
