@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  enhance-dnstwist:
+    build: .
+    env_file:
+      - .env
+    command: ["go", "run", "cmd/enhance-dnstwist/main.go"]

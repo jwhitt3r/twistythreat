@@ -13,6 +13,12 @@ type Domain struct {
     DNS_AAAA []string `json:"dns_aaaa,omitempty"`
 }
 
+type DomainStatus struct {
+    Domain    string
+    Status    string
+    WhoisData string
+}
+
 func LoadDomains(filename string) ([]Domain, error) {
 	file, err := os.Open(filename)
 	if err != nil {
