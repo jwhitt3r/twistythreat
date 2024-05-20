@@ -139,7 +139,7 @@ The application sends the `condensed_suspicious.txt` file to a specified HTTP en
 This project is licensed under the GNU General Public License v3.0 License. See the LICENSE file for details.
 
 # Acknowledgements
-dnstwist: This project uses dnstwist, a tool for domain name permutation analysis to detect potential threats. dnstwist is licensed under the MIT License.
+dnstwist: This project uses dnstwist, a tool for domain name permutation analysis to detect potential threats. dnstwist is licensed under the Apache License 2.0.
 
 # Contact
 For any questions or issues, please open an issue on GitHub or contact me at Mastodon: @jwhitter@mastodon.social
